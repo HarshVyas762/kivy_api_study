@@ -1,0 +1,59 @@
+#:kivy 1.9.1
+
+
+<PlaySoundFile>:
+	orientation: "vertical"
+	speech_input: text_box
+	padding: 10
+	spacing: 10
+
+
+	Label:		
+		font_size: 50
+		color: .7, .2, .5, 1
+		text: "Text to Speech"
+	
+	BoxLayout:
+		size_hint_y: None
+		spacing: 5
+		height: 55
+
+		TextInput:
+			id: text_box			
+			font_size: 35
+			hint_text: "'text-to-speech'"
+			multiline: False
+
+		Button:
+			size_hint_x: None
+			width: 60
+			color: 0, .8, 1, 1
+			text: "save"
+			on_press: root.get_speech()
+
+		Button:
+			size_hint_x: None
+			width: 60
+			color: .3, .1, .1, 1
+			text: "clear"			
+			on_press: text_box.text = ""
+
+	BoxLayout:
+		spacing: 15
+		size_hint_y: None
+		height: 180
+
+		Button:
+			font_size: 30
+			text: "Play"
+			color: 0, 1, 0, 1	
+			on_press: root.play_text()
+
+		Button:
+			font_size: 30
+			text: "Stop"
+			color: .75, 0, 0, 1	
+			on_press: root.stop_play()
+			
+
+		
