@@ -10,11 +10,20 @@
 
 <PageButton@Button>:
 
+<SoundButton@Button>:
+	text: "sound"
+
+<FavHeader@Label>:
+
+<Favorites@Label>:
+
 
 ScreenManagment:
 	transition: FadeTransition()
 	MainScreen:
 	ShakespearScreen:
+	PirateScreen:
+	RudeScreen:
 	FavoriteScreen:
 
 
@@ -22,16 +31,23 @@ ScreenManagment:
 	name: "main"
 	BoxLayout:
 		orientation: "vertical"
+		SoundButton:
+
 		Label: 
 			text: "Insult Ganerator"
-		BoxLayout:
-			orientation: "vertical"
-			MainScreenButton:
-				on_press: app.root.current = "shakespear"
-				text: "shakesprear"
-			MainScreenButton:
-				on_press: app.root.current = "favorite"
-				text: "favorite"
+
+		MainScreenButton:
+			on_press: app.root.current = "shakespear"
+			text: "shakesprear"
+		MainScreenButton:
+			on_press: app.root.current = "pirate"
+			text: "pirate"
+		MainScreenButton:
+			on_press: app.root.current = "rude"
+			text: "rude"
+		MainScreenButton:
+			on_press: app.root.current = "favorite"
+			text: "favorite"
 
 <ShakespearScreen>:
 	name: "shakespear"
@@ -39,6 +55,8 @@ ScreenManagment:
 		padding: 8
 		orientation: "vertical"
 		generat_phrase: phrase_label
+
+		SoundButton:
 
 		Label:
 			text: "Shakespear"
@@ -72,13 +90,129 @@ ScreenManagment:
 			PageButton:
 				text: "favorite"
 			PageButton:
-				text: "[]-->>"
+				text: "pirate-->>"
+				on_press: app.root.current = "pirate"
+
+<PirateScreen>:
+	name: "pirate"
+	BoxLayout:
+		padding: 8
+		orientation: "vertical"
+		generat_phrase: phrase_label
+
+		SoundButton:
+
+		Label:
+			text: "Pirate"
+
+		BoxLayout:
+			padding: 12
+			spacing: 36		
+			ShakeButton:
+				text: "Insult"
+				on_press: phrase_label.text = root.sayit.get_current()
+			ShakeButton:
+				text: "Previous"
+				on_press: phrase_label.text = root.sayit.get_previous()
+			ShakeButton:
+				text: "Stop"
+
+		Label:
+			id: phrase_label
+			text: "Generated Insult"
+
+		BoxLayout:
+			FavoriteButton:
+				text: "save to collection"
+			FavoriteButton:
+				text: "save as favorite "
+
+		BoxLayout:
+			PageButton:
+				text: "<<-- shakespear "
+				on_press: app.root.current = "shakespear"
+			PageButton:
+				text: "favorite"
+			PageButton:
+				text: "rude -->>"
+				on_press: app.root.current = "rude"
+
+<RudeScreen>:
+	name: "rude"
+	BoxLayout:
+		padding: 8
+		orientation: "vertical"
+		generat_phrase: phrase_label
+
+		SoundButton:
+
+		Label:
+			text: "Rude"
+
+		BoxLayout:
+			padding: 12
+			spacing: 36		
+			ShakeButton:
+				text: "Insult"
+				on_press: phrase_label.text = root.sayit.get_current()
+			ShakeButton:
+				text: "Previous"
+				on_press: phrase_label.text = root.sayit.get_previous()
+			ShakeButton:
+				text: "Stop"
+
+		Label:
+			id: phrase_label
+			text: "Generated Insult"
+
+		BoxLayout:
+			FavoriteButton:
+				text: "save to collection"
+			FavoriteButton:
+				text: "save as favorite "
+
+		BoxLayout:
+			PageButton:
+				text: "<<-- pirate "
+				on_press: app.root.current = "pirate"
+			PageButton:
+				text: "favorite"
+			PageButton:
+				text: "favorites -->>"
+				on_press: app.root.current = "favorite"
 
 <FavoriteScreen>:
 	name: "favorite"
-	Button:
-		on_press: app.root.current = "main"
-		text: "main"
+	BoxLayout:
+		padding: 8
+		orientation: "vertical"
+		SoundButton:
+
+		FavHeader:
+			text: "shakespear"
+		Favorites:
+			text: "shakespear phrases"
+
+		FavHeader:
+			text: "pirate"
+		Favorites:
+			text: "pirate phrases"
+
+		FavHeader:
+			text: "rude"
+		Favorites:
+			text: "rude phrases"
+
+		BoxLayout:
+			PageButton:
+				text: "<<-- rude "
+				on_press: app.root.current = "rude"
+			PageButton:
+				text: "favorite"
+			PageButton:
+				text: "shakespear -->>"
+				on_press: app.root.current = "shakespear"
+
 
 
 		

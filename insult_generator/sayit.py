@@ -6,9 +6,13 @@ from creatinsult import CreatInsult
 
 class SayIt(BoxLayout):
 	generat_phrase = ObjectProperty(0)
-	insult = CreatInsult()
+	insult = None
+	text_file = None
 	previous_phrase = ""
 	current_phrase = ""
+
+	def __init__(self, txtlen, txtfile):
+		self.insult = CreatInsult(txtlen, txtfile)
 
 	#insult.set_word_location()
 	

@@ -11,7 +11,19 @@ class MainScreen(Screen):
 
 
 class ShakespearScreen(Screen):
-	sayit = SayIt()
+	txt_len = [4, 55, 106, 157]
+	txt_file = "shakespear.txt"
+	sayit = SayIt(txt_len, txt_file)
+
+class PirateScreen(Screen):
+	txt_len = [5, 43, 77, 109]
+	txt_file = "pirate.txt"
+	sayit = SayIt(txt_len, txt_file )
+
+class RudeScreen(Screen):
+	txt_len = [7, 51, 72, 88]
+	txt_file = "rude.txt"
+	sayit = SayIt(txt_len, txt_file)
 
 
 class FavoriteScreen(Screen):

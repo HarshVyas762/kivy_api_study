@@ -12,18 +12,18 @@ class CreatInsult():
 	phrase = None
 	word_location = [-1, -1, -1, -1]
 
-	def __init__(self):
-		self.preface = 4
-		self.col_one = 55
-		self.col_two = 106
-		self.col_three = 157
-		
+	def __init__(self, txtlen, txtfile):
+		self.preface = txtlen[0]
+		self.col_one = txtlen[1]
+		self.col_two = txtlen[2]
+		self.col_three = txtlen[3]
+		self.txt_file = txtfile
 
 	def get_string(self):
 	#	set_phrase = [False, False, False, False]
 		line_count = 0
 		self.phrase = ""
-		with open("shakespear.txt") as file:
+		with open(self.txt_file) as file:
 			for line in file:
 				line = line[:-1]
 				if line_count == self.word_location[0]:
