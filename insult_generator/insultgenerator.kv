@@ -1,0 +1,46 @@
+#:kivy 1.9.2
+
+<ShakeButton@Button>:
+
+<FavoriteButton@Button>:
+
+<PageButton@Button>:
+
+
+<SayIt>:
+	padding: 8
+	orientation: "vertical"
+	generat_phrase: phrase_label
+
+	Label:
+		text: "Shakespear"
+
+	BoxLayout:
+		padding: 12
+		spacing: 36		
+		ShakeButton:
+			text: "Insult"
+			on_press: phrase_label.text = root.get_current()
+		ShakeButton:
+			text: "Previous"
+			on_press: phrase_label.text = root.get_previous()
+		ShakeButton:
+			text: "Stop"
+
+	Label:
+		id: phrase_label
+		text: "Generated Insult"
+
+	BoxLayout:
+		FavoriteButton:
+			text: "save to collection"
+		FavoriteButton:
+			text: "save as favorite "
+
+	BoxLayout:
+		PageButton:
+			text: "<<--[]"
+		PageButton:
+			text: "favorite"
+		PageButton:
+			text: "[]-->>"
