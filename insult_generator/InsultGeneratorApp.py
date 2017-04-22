@@ -1,41 +1,36 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder
 from kivy.uix.label import Label
-from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
+
+from sayit import SayIt
 
 
-from creatinsult import CreatInsult
+class MainScreen(Screen):
+	pass
 
 
-class SayIt(BoxLayout):
-	generat_phrase = ObjectProperty(0)
-	insult = CreatInsult()
-	previous_phrase = ""
-	current_phrase = ""
+class ShakespearScreen(Screen):
+	sayit = SayIt()
 
-	#insult.set_word_location()
-	
 
-	def get_phrase(self):
-		self.insult.set_word_location()
-		self.previous_phrase = self.current_phrase
-		self.current_phrase = self.insult.get_string()
-		
-	def get_current(self):
-		self.get_phrase()
-		return self.current_phrase
+class FavoriteScreen(Screen):
+	pass
 
-	def get_previous(self):
-		return self.previous_phrase
 
-	def stop_play(self):
-		self.current_phrase.stop()
-		self.previous_phrase.stop()
+class ScreenManagment(ScreenManager):
+	pass
 
+
+
+
+
+
+load_kivy_file = Builder.load_file("insultgenerator.kv")
 
 class InsultGeneratorApp(App):
 	def build(self):
-		return SayIt()
+		return load_kivy_file
 
 
 if __name__ == '__main__':

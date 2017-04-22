@@ -1,5 +1,9 @@
 #:kivy 1.9.2
 
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<MainScreenButton@Button>:
+
 <ShakeButton@Button>:
 
 <FavoriteButton@Button>:
@@ -7,40 +11,75 @@
 <PageButton@Button>:
 
 
-<SayIt>:
-	padding: 8
-	orientation: "vertical"
-	generat_phrase: phrase_label
+ScreenManagment:
+	transition: FadeTransition()
+	MainScreen:
+	ShakespearScreen:
+	FavoriteScreen:
 
-	Label:
-		text: "Shakespear"
 
+<MainScreen>:
+	name: "main"
 	BoxLayout:
-		padding: 12
-		spacing: 36		
-		ShakeButton:
-			text: "Insult"
-			on_press: phrase_label.text = root.get_current()
-		ShakeButton:
-			text: "Previous"
-			on_press: phrase_label.text = root.get_previous()
-		ShakeButton:
-			text: "Stop"
+		orientation: "vertical"
+		Label: 
+			text: "Insult Ganerator"
+		BoxLayout:
+			orientation: "vertical"
+			MainScreenButton:
+				on_press: app.root.current = "shakespear"
+				text: "shakesprear"
+			MainScreenButton:
+				on_press: app.root.current = "favorite"
+				text: "favorite"
 
-	Label:
-		id: phrase_label
-		text: "Generated Insult"
-
+<ShakespearScreen>:
+	name: "shakespear"
 	BoxLayout:
-		FavoriteButton:
-			text: "save to collection"
-		FavoriteButton:
-			text: "save as favorite "
+		padding: 8
+		orientation: "vertical"
+		generat_phrase: phrase_label
 
-	BoxLayout:
-		PageButton:
-			text: "<<--[]"
-		PageButton:
-			text: "favorite"
-		PageButton:
-			text: "[]-->>"
+		Label:
+			text: "Shakespear"
+
+		BoxLayout:
+			padding: 12
+			spacing: 36		
+			ShakeButton:
+				text: "Insult"
+				on_press: phrase_label.text = root.sayit.get_current()
+			ShakeButton:
+				text: "Previous"
+				on_press: phrase_label.text = root.sayit.get_previous()
+			ShakeButton:
+				text: "Stop"
+
+		Label:
+			id: phrase_label
+			text: "Generated Insult"
+
+		BoxLayout:
+			FavoriteButton:
+				text: "save to collection"
+			FavoriteButton:
+				text: "save as favorite "
+
+		BoxLayout:
+			PageButton:
+				text: "<<-- favorites "
+				on_press: app.root.current = "favorite"
+			PageButton:
+				text: "favorite"
+			PageButton:
+				text: "[]-->>"
+
+<FavoriteScreen>:
+	name: "favorite"
+	Button:
+		on_press: app.root.current = "main"
+		text: "main"
+
+
+		
+
