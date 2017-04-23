@@ -24,8 +24,6 @@ ScreenManagment:
 	ShakespearScreen:
 	PirateScreen:
 	RudeScreen:
-	FavoriteScreen:
-
 
 <MainScreen>:
 	name: "main"
@@ -45,9 +43,7 @@ ScreenManagment:
 		MainScreenButton:
 			on_press: app.root.current = "rude"
 			text: "rude"
-		MainScreenButton:
-			on_press: app.root.current = "favorite"
-			text: "favorite"
+		
 
 <ShakespearScreen>:
 	name: "shakespear"
@@ -75,21 +71,20 @@ ScreenManagment:
 
 		Label:
 			id: phrase_label
-			text: "Generated Insult"
+			
 
 		BoxLayout:
 			FavoriteButton:
-				text: "save to collection"
-				on_release: root.savefav.f_input("shake_fave.txt", phrase_label.text, "a")
+				text: "play favorite"
+				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
 			FavoriteButton:
 				text: "save as favorite"
 				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
+
 		BoxLayout:
 			PageButton:
-				text: "<<-- favorites"
-				on_press: app.root.current = "favorite"
-			PageButton:
-				text: "favorite"
+				text: "<<-- rude"
+				on_press: app.root.current = "rude"
 			PageButton:
 				text: "pirate-->>"
 				on_press: app.root.current = "pirate"
@@ -120,12 +115,12 @@ ScreenManagment:
 
 		Label:
 			id: phrase_label
-			text: "Generated Insult"
+			
 
 		BoxLayout:
 			FavoriteButton:
-				text: "save to collection"
-				on_release: root.savefav.f_input("pirate_fave.txt", phrase_label.text, "a")
+				text: "play favorite"
+				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
 			FavoriteButton:
 				text: "save as favorite"
 				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
@@ -134,8 +129,6 @@ ScreenManagment:
 			PageButton:
 				text: "<<-- shakespear"
 				on_press: app.root.current = "shakespear"
-			PageButton:
-				text: "favorite"
 			PageButton:
 				text: "rude -->>"
 				on_press: app.root.current = "rude"
@@ -166,12 +159,12 @@ ScreenManagment:
 
 		Label:
 			id: phrase_label
-			text: "Generated Insult"
+			
 
 		BoxLayout:
 			FavoriteButton:
-				text: "save to collection"
-				on_release: root.savefav.f_input("rude_fave.txt", phrase_label.text, "a")
+				text: "play favorite"
+				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
 			FavoriteButton:
 				text: "save as favorite"
 				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
@@ -181,44 +174,5 @@ ScreenManagment:
 				text: "<<-- pirate"
 				on_press: app.root.current = "pirate"
 			PageButton:
-				text: "favorite"
-			PageButton:
-				text: "favorites -->>"
-				on_press: app.root.current = "favorite"
-
-<FavoriteScreen>:
-	name: "favorite"
-	BoxLayout:
-		padding: 8
-		orientation: "vertical"
-		SoundButton:
-
-		FavHeader:
-			text: "shakespear"
-		Favorites:
-			text: "shakespear phrases"
-
-		FavHeader:
-			text: "pirate"
-		Favorites:
-			text: "pirate phrases"
-
-		FavHeader:
-			text: "rude"
-		Favorites:
-			text: "rude phrases"
-
-		BoxLayout:
-			PageButton:
-				text: "<<-- rude"
-				on_press: app.root.current = "rude"
-			PageButton:
-				text: "favorite"
-			PageButton:
 				text: "shakespear -->>"
 				on_press: app.root.current = "shakespear"
-
-
-
-		
-

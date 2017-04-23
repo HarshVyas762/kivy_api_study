@@ -14,9 +14,6 @@ class SayIt(BoxLayout):
 	def __init__(self, txtlen, txtfile):
 		self.insult = CreatInsult(txtlen, txtfile)
 
-	#insult.set_word_location()
-	
-
 	def get_phrase(self):
 		self.insult.set_word_location()
 		self.previous_phrase = self.current_phrase

@@ -7,7 +7,6 @@ from savefavorite import SaveFavorite
 from sayit import SayIt
 
 
-
 class MainScreen(Screen):
 	pass
 
@@ -18,11 +17,13 @@ class ShakespearScreen(Screen):
 	savefav = SaveFavorite()
 	sayit = SayIt(txt_len, txt_file)
 
+
 class PirateScreen(Screen):
 	txt_len = [5, 43, 77, 109]
 	txt_file = "pirate.txt"
 	savefav = SaveFavorite()
 	sayit = SayIt(txt_len, txt_file )
+
 
 class RudeScreen(Screen):
 	txt_len = [7, 51, 72, 88]
@@ -30,16 +31,9 @@ class RudeScreen(Screen):
 	savefav = SaveFavorite()
 	sayit = SayIt(txt_len, txt_file)
 
-class FavoriteScreen(Screen):
-	pass
-
 
 class ScreenManagment(ScreenManager):
 	pass
-
-
-
-
 
 
 load_kivy_file = Builder.load_file("insultgenerator.kv")

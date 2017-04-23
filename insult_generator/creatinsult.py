@@ -1,8 +1,6 @@
 from random import randrange
 
 
-
-
 class CreatInsult():
 	preface = None
 	col_one = None
@@ -20,7 +18,6 @@ class CreatInsult():
 		self.txt_file = txtfile
 
 	def get_string(self):
-	#	set_phrase = [False, False, False, False]
 		line_count = 0
 		self.phrase = ""
 		with open(self.txt_file) as file:
@@ -38,30 +35,13 @@ class CreatInsult():
 
 		return self.phrase
 
-
 	def set_word_location(self):
-
 		self.word_location[0] = randrange(0, self.preface)
 		self.word_location[1] = randrange(self.preface+1, self.col_one)
 		self.word_location[2] = randrange(self.col_one+1, self.col_two)
 		self.word_location[3] = randrange(self.col_two+1, self.col_three)
 
-		#for i in self.word_location:
-		#S	print(i)
-
-
-
-
-
-
-
-
-
-
 	def f_output():
-		# open file
 		with open("database.txt") as file:
-			# print out each line in file
 			for line in file:
 				print(line)
-				# close file
