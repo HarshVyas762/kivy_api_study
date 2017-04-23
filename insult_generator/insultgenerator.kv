@@ -13,11 +13,6 @@
 <SoundButton@Button>:
 	text: "sound"
 
-<FavHeader@Label>:
-
-<Favorites@Label>:
-
-
 ScreenManagment:
 	transition: FadeTransition()
 	MainScreen:
@@ -62,12 +57,16 @@ ScreenManagment:
 			spacing: 36		
 			ShakeButton:
 				text: "Insult"
-				on_press: phrase_label.text = root.sayit.get_current()
+				on_press: phrase_label.text = root.sayit.get_current()				
 			ShakeButton:
 				text: "Previous"
 				on_press: phrase_label.text = root.sayit.get_previous()
 			ShakeButton:
+				text: "play"
+				on_press: root.playspeech.play_text(phrase_label.text, "en-uk", "play_file.mp3")
+			ShakeButton:
 				text: "Stop"
+				on_press: root.playspeech.stop_play()
 
 		Label:
 			id: phrase_label
@@ -111,7 +110,11 @@ ScreenManagment:
 				text: "Previous"
 				on_press: phrase_label.text = root.sayit.get_previous()
 			ShakeButton:
+				text: "play"
+				on_press: root.playspeech.play_text(phrase_label.text, "en-au", "play_file.mp3")
+			ShakeButton:
 				text: "Stop"
+				on_press: root.playspeech.stop_play()
 
 		Label:
 			id: phrase_label
@@ -155,8 +158,11 @@ ScreenManagment:
 				text: "Previous"
 				on_press: phrase_label.text = root.sayit.get_previous()
 			ShakeButton:
+				text: "play"
+				on_press: root.playspeech.play_text(phrase_label.text, "en-us", "play_file.mp3")
+			ShakeButton:
 				text: "Stop"
-
+				on_press: root.playspeech.stop_play()
 		Label:
 			id: phrase_label
 			

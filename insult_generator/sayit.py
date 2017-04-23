@@ -1,10 +1,9 @@
-from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 
 from creatinsult import CreatInsult
 
 
-class SayIt(BoxLayout):
+class SayIt():
 	generat_phrase = ObjectProperty(0)
 	insult = None
 	text_file = None

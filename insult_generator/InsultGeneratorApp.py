@@ -1,10 +1,13 @@
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
+from kivy.core.audio import SoundLoader
 
 from savefavorite import SaveFavorite
 from sayit import SayIt
+from tts import PlaySoundFile
 
 
 class MainScreen(Screen):
@@ -15,6 +18,7 @@ class ShakespearScreen(Screen):
 	txt_len = [4, 55, 106, 157]
 	txt_file = "shakespear.txt"
 	savefav = SaveFavorite()
+	playspeech = PlaySoundFile()
 	sayit = SayIt(txt_len, txt_file)
 
 
@@ -22,6 +26,7 @@ class PirateScreen(Screen):
 	txt_len = [5, 43, 77, 109]
 	txt_file = "pirate.txt"
 	savefav = SaveFavorite()
+	playspeech = PlaySoundFile()
 	sayit = SayIt(txt_len, txt_file )
 
 
@@ -29,6 +34,7 @@ class RudeScreen(Screen):
 	txt_len = [7, 51, 72, 88]
 	txt_file = "rude.txt"
 	savefav = SaveFavorite()
+	playspeech = PlaySoundFile()
 	sayit = SayIt(txt_len, txt_file)
 
 
