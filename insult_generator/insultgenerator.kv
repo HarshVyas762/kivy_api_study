@@ -80,12 +80,13 @@ ScreenManagment:
 		BoxLayout:
 			FavoriteButton:
 				text: "save to collection"
+				on_release: root.savefav.f_input("shake_fave.txt", phrase_label.text, "a")
 			FavoriteButton:
-				text: "save as favorite "
-
+				text: "save as favorite"
+				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
 		BoxLayout:
 			PageButton:
-				text: "<<-- favorites "
+				text: "<<-- favorites"
 				on_press: app.root.current = "favorite"
 			PageButton:
 				text: "favorite"
@@ -124,12 +125,14 @@ ScreenManagment:
 		BoxLayout:
 			FavoriteButton:
 				text: "save to collection"
+				on_release: root.savefav.f_input("pirate_fave.txt", phrase_label.text, "a")
 			FavoriteButton:
-				text: "save as favorite "
+				text: "save as favorite"
+				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
 
 		BoxLayout:
 			PageButton:
-				text: "<<-- shakespear "
+				text: "<<-- shakespear"
 				on_press: app.root.current = "shakespear"
 			PageButton:
 				text: "favorite"
@@ -168,12 +171,14 @@ ScreenManagment:
 		BoxLayout:
 			FavoriteButton:
 				text: "save to collection"
+				on_release: root.savefav.f_input("rude_fave.txt", phrase_label.text, "a")
 			FavoriteButton:
-				text: "save as favorite "
+				text: "save as favorite"
+				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
 
 		BoxLayout:
 			PageButton:
-				text: "<<-- pirate "
+				text: "<<-- pirate"
 				on_press: app.root.current = "pirate"
 			PageButton:
 				text: "favorite"
@@ -205,7 +210,7 @@ ScreenManagment:
 
 		BoxLayout:
 			PageButton:
-				text: "<<-- rude "
+				text: "<<-- rude"
 				on_press: app.root.current = "rude"
 			PageButton:
 				text: "favorite"
