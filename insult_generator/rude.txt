@@ -1,3 +1,5 @@
+en-us
+###################
 fuck off! you
 shut the fuck up! you
 get out! you
@@ -5,6 +7,9 @@ disapear! you
 fuck you! you
 move you're ass! you
 goddamn! you
+eat shit! you
+go fuck yourself! you
+choke yourself! you
 ###################
 stupid
 lazy
@@ -27,7 +32,6 @@ infuriating
 insufferable
 unbearable
 dreadful
-patheric
 incompetent
 dull
 broken

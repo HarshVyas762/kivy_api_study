@@ -1,3 +1,5 @@
+en-au
+###################
 ahoy you
 walk the plank you
 yo, ho,  you
@@ -20,27 +22,27 @@ pig-faced
 lard-brained
 snivelin
 land-lovin
-hornswagglin'
+hornswagglin
 daft
-bilge-drinkin'
+bilge-drinkin
 chimp-faced
 fathom-head
 fork-faced
-bilge-suckin'
-eel-smellin'
+bilge-suckin
+eel-smellin
 fathom-head
-keelhaulin'
-loot-stealin'
+keelhaulin
+loot-stealin
 squiffy
-fish-kissin'
-cutlass-swingin'
-whale-breathin'
-rat-eatin'
-swashbuckin'
-kracken-smallin'
+fish-kissin
+cutlass-swingin
+whale-breathin
+rat-eatin
+swashbuckin
+kracken-smallin
 pustulant
-chain-draggin'
-mermaid-kissin'
+chain-draggin
+mermaid-kissin
 ###################
 hornswagglin'
 coamin'

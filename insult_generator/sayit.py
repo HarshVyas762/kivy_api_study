@@ -4,22 +4,23 @@ from creatinsult import CreatInsult
 
 
 class SayIt():
-	generat_phrase = ObjectProperty(0)
-	insult = None
+
+	insult = CreatInsult()
 	text_file = None
 	previous_phrase = ""
 	current_phrase = ""
 
-	def __init__(self, txtlen, txtfile):
-		self.insult = CreatInsult(txtlen, txtfile)
+	#def set_insult(self, txtlen, txtfile):
+	#	self.insult = CreatInsult(txtlen, txtfile)
 
-	def get_phrase(self):
+	def get_phrase(self, txtlen, txtfile):
+		self.insult.set_genre(txtlen, txtfile)
 		self.insult.set_word_location()
 		self.previous_phrase = self.current_phrase
 		self.current_phrase = self.insult.get_string()
 		
-	def get_current(self):
-		self.get_phrase()
+	def get_current(self, txtlen, txtfile):
+		self.get_phrase(txtlen, txtfile)
 		return self.current_phrase
 
 	def get_previous(self):

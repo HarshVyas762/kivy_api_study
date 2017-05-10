@@ -1,8 +1,9 @@
 #:kivy 1.9.2
 
-#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 <MainScreenButton@Button>:
+	on_press: app.root.current = "insultscreen" 
 
 <ShakeButton@Button>:
 
@@ -10,175 +11,83 @@
 
 <PageButton@Button>:
 
-<SoundButton@Button>:
-	text: "sound"
-
 ScreenManagment:
 	transition: FadeTransition()
 	MainScreen:
-	ShakespearScreen:
-	PirateScreen:
-	RudeScreen:
+	InsultScreen:
 
 <MainScreen>:
 	name: "main"
 	BoxLayout:
 		orientation: "vertical"
-		SoundButton:
-
 		Label: 
 			text: "Insult Ganerator"
-
 		MainScreenButton:
-			on_press: app.root.current = "shakespear"
-			text: "shakesprear"
-		MainScreenButton:
-			on_press: app.root.current = "pirate"
-			text: "pirate"
-		MainScreenButton:
-			on_press: app.root.current = "rude"
-			text: "rude"
+			text: "enter"
 		
 
-<ShakespearScreen>:
-	name: "shakespear"
+<InsultScreen>:
+	name: "insultscreen"
+	sound_button: sound
+	screen_name: sc_name
+	screen_left: sc_left
+	screen_right: sc_right
+	generate_phrase: phrase_label
 	BoxLayout:
 		padding: 8
-		orientation: "vertical"
-		generat_phrase: phrase_label
+		orientation: "vertical"	
 
-		SoundButton:
+		Button:
+			id: sound
+			text: "sound"
+			color: 0.9, 0, 0.3, 1
+			on_release: root.sound_select()
+
+		BoxLayout:
+			PageButton:
+				id: sc_left	
+				text: root.insult_page[1]
+				on_release: root.previous_screen()
+				
+			Label:
+				id: sc_name
+				text: root.insult_page[0]
+
+			PageButton:
+				id: sc_right
+				text: root.insult_page[2]
+				on_release: root.next_screen()
+				
 
 		Label:
-			text: "Shakespear"
+			id: phrase_label
 
 		BoxLayout:
 			padding: 12
 			spacing: 36		
 			ShakeButton:
 				text: "Insult"
-				on_press: phrase_label.text = root.sayit.get_current()				
+				on_press: root.current_insult()
+			
 			ShakeButton:
 				text: "Previous"
-				on_press: phrase_label.text = root.sayit.get_previous()
+				on_press: root.previous_insult()
+
 			ShakeButton:
-				text: "play"
-				on_press: root.playspeech.play_text(phrase_label.text, "en-uk", "play_file.mp3")
+				text: "Play"
+				on_press: root.play_button()
+
 			ShakeButton:
 				text: "Stop"
 				on_press: root.playspeech.stop_play()
-
-		Label:
-			id: phrase_label
 			
 
 		BoxLayout:
 			FavoriteButton:
 				text: "play favorite"
-				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
+				on_release: root.play_favorite()
+
 			FavoriteButton:
 				text: "save as favorite"
-				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
-
-		BoxLayout:
-			PageButton:
-				text: "<<-- rude"
-				on_press: app.root.current = "rude"
-			PageButton:
-				text: "pirate-->>"
-				on_press: app.root.current = "pirate"
-
-<PirateScreen>:
-	name: "pirate"
-	BoxLayout:
-		padding: 8
-		orientation: "vertical"
-		generat_phrase: phrase_label
-
-		SoundButton:
-
-		Label:
-			text: "Pirate"
-
-		BoxLayout:
-			padding: 12
-			spacing: 36		
-			ShakeButton:
-				text: "Insult"
-				on_press: phrase_label.text = root.sayit.get_current()
-			ShakeButton:
-				text: "Previous"
-				on_press: phrase_label.text = root.sayit.get_previous()
-			ShakeButton:
-				text: "play"
-				on_press: root.playspeech.play_text(phrase_label.text, "en-au", "play_file.mp3")
-			ShakeButton:
-				text: "Stop"
-				on_press: root.playspeech.stop_play()
-
-		Label:
-			id: phrase_label
-			
-
-		BoxLayout:
-			FavoriteButton:
-				text: "play favorite"
-				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
-			FavoriteButton:
-				text: "save as favorite"
-				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
-
-		BoxLayout:
-			PageButton:
-				text: "<<-- shakespear"
-				on_press: app.root.current = "shakespear"
-			PageButton:
-				text: "rude -->>"
-				on_press: app.root.current = "rude"
-
-<RudeScreen>:
-	name: "rude"
-	BoxLayout:
-		padding: 8
-		orientation: "vertical"
-		generat_phrase: phrase_label
-
-		SoundButton:
-
-		Label:
-			text: "Rude"
-
-		BoxLayout:
-			padding: 12
-			spacing: 36		
-			ShakeButton:
-				text: "Insult"
-				on_press: phrase_label.text = root.sayit.get_current()
-			ShakeButton:
-				text: "Previous"
-				on_press: phrase_label.text = root.sayit.get_previous()
-			ShakeButton:
-				text: "play"
-				on_press: root.playspeech.play_text(phrase_label.text, "en-us", "play_file.mp3")
-			ShakeButton:
-				text: "Stop"
-				on_press: root.playspeech.stop_play()
-		Label:
-			id: phrase_label
-			
-
-		BoxLayout:
-			FavoriteButton:
-				text: "play favorite"
-				on_press: phrase_label.text = root.savefav.f_output("fav_insult.txt")
-			FavoriteButton:
-				text: "save as favorite"
-				on_press: root.savefav.f_input("fav_insult.txt", phrase_label.text, "w")
-
-		BoxLayout:
-			PageButton:
-				text: "<<-- pirate"
-				on_press: app.root.current = "pirate"
-			PageButton:
-				text: "shakespear -->>"
-				on_press: app.root.current = "shakespear"
+				on_release: root.save_favorite()
+				

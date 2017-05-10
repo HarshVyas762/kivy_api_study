@@ -6,14 +6,14 @@ class SaveFavorite():
 		fav = None
 		with open(file_l) as file:
 			for line in file:
-				fav = line[:-1]
+				fav = line
 				
 		return(fav)
 
 	def f_input(self, file_l, save_l, aw):
 		if not self.test_input(file_l, save_l):
 			with open(file_l, aw) as file:
-				file.write(save_l + "\n")
+				file.write(save_l)
 
 	def test_input(self, file_l, save_l):
 		already_saved = False

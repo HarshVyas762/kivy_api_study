@@ -10,7 +10,7 @@ class CreatInsult():
 	phrase = None
 	word_location = [-1, -1, -1, -1]
 
-	def __init__(self, txtlen, txtfile):
+	def set_genre(self, txtlen, txtfile):
 		self.preface = txtlen[0]
 		self.col_one = txtlen[1]
 		self.col_two = txtlen[2]
@@ -23,6 +23,8 @@ class CreatInsult():
 		with open(self.txt_file) as file:
 			for line in file:
 				line = line[:-1]
+				if line_count == 0:
+					self.phrase += line
 				if line_count == self.word_location[0]:
 					self.phrase += line
 				if line_count == self.word_location[1]:
@@ -36,7 +38,7 @@ class CreatInsult():
 		return self.phrase
 
 	def set_word_location(self):
-		self.word_location[0] = randrange(0, self.preface)
+		self.word_location[0] = randrange(2, self.preface)
 		self.word_location[1] = randrange(self.preface+1, self.col_one)
 		self.word_location[2] = randrange(self.col_one+1, self.col_two)
 		self.word_location[3] = randrange(self.col_two+1, self.col_three)
