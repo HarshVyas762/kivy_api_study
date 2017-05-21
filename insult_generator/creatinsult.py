@@ -42,8 +42,4 @@ class CreatInsult():
 		self.word_location[1] = randrange(self.preface+1, self.col_one)
 		self.word_location[2] = randrange(self.col_one+1, self.col_two)
 		self.word_location[3] = randrange(self.col_two+1, self.col_three)
-
-	def f_output():
-		with open("database.txt") as file:
-			for line in file:
-				print(line)
+		print(self.word_location[0], " " , self.word_location[1] , " " , self.word_location[2] , " " , self.word_location[3] , "\n")

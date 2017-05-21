@@ -26,12 +26,11 @@ class InsultScreen(Screen):
 	insult = None
 	insult_page = ["shakespear", "pirate", "rude"]
 	insult_text = ["shakespear.txt", "pirate.txt", "rude.txt", "favorite.txt"]
-	file_len = [[4, 55, 106, 157], [5, 43, 77, 109], [7, 51, 72, 88]]
+	file_len = [[6, 57, 108, 158], [7, 45, 79, 110], [13, 57, 87, 115]]
 	which_screen = 0
 	savefav = SaveFavorite()
 	playspeech = PlaySoundFile()
 	say = SayIt()
-
 
 	def current_screen(self):
 		if(self.which_screen == 2):
@@ -62,6 +61,7 @@ class InsultScreen(Screen):
 		self.current_screen()
 
 	def current_insult(self):
+		self.playspeech.stop_play()
 		self.insult = self.say.get_current(self.file_len[self.which_screen], self.insult_text[self.which_screen])
 		if self.insult:
 			lang = self.insult[:5]
@@ -71,6 +71,7 @@ class InsultScreen(Screen):
 				self.playspeech.play_text(self.insult[5:], lang,  self.mp3_file)
 
 	def previous_insult(self):
+		self.playspeech.stop_play()
 		self.insult = self.say.get_previous()
 		if self.insult:
 			lang = self.insult[:5]
@@ -80,6 +81,7 @@ class InsultScreen(Screen):
 				self.playspeech.play_text(self.insult[5:], lang,  self.mp3_file)
 
 	def play_button(self):
+		self.playspeech.stop_play()
 		if self.insult:
 			lang = self.insult[:5]
 
@@ -91,30 +93,30 @@ class InsultScreen(Screen):
 			self.savefav.f_input(self.insult_text[3], self.insult, "w")
 
 	def play_favorite(self):
-		fav = self.savefav.f_output(self.insult_text[3])
+		self.playspeech.stop_play()
+		self.insult = self.savefav.f_output(self.insult_text[3])
 
-		if fav:
-			lang = fav[:5]
-
-			self.generate_phrase.text = fav[5:]
+		if self.insult:
+			lang = self.insult[:5]
+			self.generate_phrase.text = self.insult[5:]
 
 			if self.sound:
-				self.playspeech.play_text(fav[5:], lang, self.mp3_file)
-
+				self.playspeech.play_text(self.insult[5:], lang, self.mp3_file)
 
 	def sound_select(self):		
 		if self.sound:			
 			self.sound = False
-			self.sound_button.color = 0.9, 0, 0.3, 1
+			self.sound_button.background_color = 1, 0, 0.1, 1
 		else:
 			self.sound = True
-			self.sound_button.color = 0, 0.9, 0.3, 1
+			self.sound_button.background_color = 0, 1, 0.1, 1
+
 
 class ScreenManagment(ScreenManager):
 	pass
 
+load_kivy_file = Builder.load_file("insultgenerator.kv")
 
-load_kivy_file = Builder.load_file("insultgen.kv")
 
 class InsultGenApp(App):
 	def build(self):

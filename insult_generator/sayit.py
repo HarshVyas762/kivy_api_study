@@ -4,14 +4,10 @@ from creatinsult import CreatInsult
 
 
 class SayIt():
-
 	insult = CreatInsult()
 	text_file = None
 	previous_phrase = ""
 	current_phrase = ""
-
-	#def set_insult(self, txtlen, txtfile):
-	#	self.insult = CreatInsult(txtlen, txtfile)
 
 	def get_phrase(self, txtlen, txtfile):
 		self.insult.set_genre(txtlen, txtfile)

@@ -1,15 +1,26 @@
-#:kivy 1.9.2
+#:kivy 1.9.1
 
 #:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 <MainScreenButton@Button>:
-	on_press: app.root.current = "insultscreen" 
-
-<ShakeButton@Button>:
-
-<FavoriteButton@Button>:
+	font_size: 24
+	on_release: app.root.current = "insultscreen" 
 
 <PageButton@Button>:
+	font_size: 24
+	color: 1, 1, 0, 1
+	background_color: 0, .55, 0.75, 1
+
+<PlayButton@Button>:
+	font_size: 24
+	color: 1, 1, 0, 1
+	background_color: 0, .55, 0.75, 1
+
+<FavoriteButton@Button>:
+	font_size: 24
+	color: 1, 1, 0, 1
+	background_color: 0, .55, 0.75, 1
+
 
 ScreenManagment:
 	transition: FadeTransition()
@@ -19,11 +30,19 @@ ScreenManagment:
 <MainScreen>:
 	name: "main"
 	BoxLayout:
+		padding: 130
 		orientation: "vertical"
+		Label:
+			font_size: 50
+			color: 0, .55, 0.75, 1
+			text: "insult ganerator"
+
 		Label: 
-			text: "Insult Ganerator"
+
 		MainScreenButton:
 			text: "enter"
+			color: 1, 1, 0, 1
+			background_color: 0, .55, 0.75, 1
 		
 
 <InsultScreen>:
@@ -34,22 +53,37 @@ ScreenManagment:
 	screen_right: sc_right
 	generate_phrase: phrase_label
 	BoxLayout:
-		padding: 8
 		orientation: "vertical"	
 
-		Button:
-			id: sound
-			text: "sound"
-			color: 0.9, 0, 0.3, 1
-			on_release: root.sound_select()
-
 		BoxLayout:
+			size_hint_y: None
+			height: 48
+			padding: 10
+			spacing: 20
+			Button:
+				size_hint: None, None
+				halign: "center"
+				valign: "middle"
+				height: 24
+				font_size: 16
+				id: sound
+				text: "sound"
+				color: 1, 1, 0, 1
+				background_color: 1, 0, 0.2, 1
+				on_release: root.sound_select()
+
+			
+		BoxLayout:
+			padding: 10
+			spacing: 20
 			PageButton:
 				id: sc_left	
 				text: root.insult_page[1]
 				on_release: root.previous_screen()
 				
 			Label:
+				font_size: 30
+				color: 0, .55, 0.75, 1
 				id: sc_name
 				text: root.insult_page[0]
 
@@ -60,34 +94,40 @@ ScreenManagment:
 				
 
 		Label:
+			halign: "center"
+			valign: "middle"
+			font_size: 40
+			text_size: self.size
+			color: 1, 0.05, 0.18, 1
 			id: phrase_label
 
 		BoxLayout:
-			padding: 12
-			spacing: 36		
-			ShakeButton:
-				text: "Insult"
+			padding: 10
+			spacing: 20		
+			PlayButton:
+				text: "insult"
 				on_press: root.current_insult()
 			
-			ShakeButton:
-				text: "Previous"
+			PlayButton:
+				text: "last"
 				on_press: root.previous_insult()
 
-			ShakeButton:
-				text: "Play"
+			PlayButton:
+				text: "play"
 				on_press: root.play_button()
 
-			ShakeButton:
-				text: "Stop"
+			PlayButton:
+				text: "stop"
 				on_press: root.playspeech.stop_play()
-			
-
+		
 		BoxLayout:
+			padding: 10
+			spacing: 20
+
 			FavoriteButton:
 				text: "play favorite"
 				on_release: root.play_favorite()
 
 			FavoriteButton:
 				text: "save as favorite"
-				on_release: root.save_favorite()
-				
+				on_release: root.save_favorite()	

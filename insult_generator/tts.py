@@ -6,6 +6,10 @@ from gtts import gTTS
 class TextToSpeech():
 	tts = None
 
+	def __init__(self):
+		self.tts = gTTS(text = " ", lang = 'en-us')
+		self.tts.save('play_file.mp3')
+
 	def set_phrase(self, phrase, ln):
 		self.tts = gTTS(text = phrase, lang = ln)
 		self.save_to_file()
@@ -29,7 +33,8 @@ class PlaySoundFile():
 			self.sound.play()
 
 	def stop_play(self):
-		self.sound.stop()
+		if self.sound:
+			self.sound.stop()
 
 	def get_sound(self, sound_f):		
 		self.sound = SoundLoader.load(sound_f)

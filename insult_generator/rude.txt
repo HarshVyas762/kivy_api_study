@@ -3,7 +3,8 @@ en-us
 fuck off! you
 shut the fuck up! you
 get out! you
-disapear! you
+disappear! you
+get lost! you
 fuck you! you
 move you're ass! you
 goddamn! you
@@ -25,7 +26,7 @@ ugly
 weird
 hopeless
 wimpy
-brailess
+brainless
 slow
 worthless
 infuriating
@@ -51,7 +52,7 @@ frozen
 hideous
 magical
 offensive
-pea-braned
+pea-brained
 cum-guzzling
 impaired
 ###################
@@ -63,6 +64,8 @@ dunce
 imbecile
 fool
 fuck
+gypsy
+disfigured
 fuckface
 penis
 cunt
@@ -90,7 +93,7 @@ scooper
 inspector
 fucker
 taster
-scracher
+scratcher
 investigator
 director
 vendor
@@ -101,3 +104,13 @@ knocker
 clown
 dealer
 repellent
+supporter
+refiner
+developer
+blubberer
+conserver
+exhibitor
+fondler
+wrecker
+entertainer
+abomination

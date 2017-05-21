@@ -27,7 +27,3 @@ class SaveFavorite():
 			pass
 
 		return(already_saved)
-
-
-
-				
