@@ -25,7 +25,7 @@ class InsultScreen(Screen):
 	sound = False
 	insult = None
 	insult_page = ["shakespear", "pirate", "rude"]
-	insult_text = ["shakespear.txt", "pirate.txt", "rude.txt", "favorite.txt"]
+	insult_text = ["text_folder/shakespear.txt", "text_folder/pirate.txt", "text_folder/rude.txt", "favorite.txt"]
 	file_len = [[6, 57, 108, 158], [7, 45, 79, 110], [13, 57, 87, 115]]
 	which_screen = 0
 	savefav = SaveFavorite()

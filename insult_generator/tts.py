@@ -8,14 +8,14 @@ class TextToSpeech():
 
 	def __init__(self):
 		self.tts = gTTS(text = " ", lang = 'en-us')
-		self.tts.save('play_file.mp3')
+		self.tts.save('mp3_folder/play_file.mp3')
 
 	def set_phrase(self, phrase, ln):
 		self.tts = gTTS(text = phrase, lang = ln)
 		self.save_to_file()
 
 	def save_to_file(self):
-		self.tts.save('play_file.mp3')
+		self.tts.save('/mp3_folder/play_file.mp3')
 
 
 class PlaySoundFile():

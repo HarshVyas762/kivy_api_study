@@ -1,5 +1,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.core.audio import SoundLoader
 from kivy.properties import ObjectProperty
 
@@ -21,7 +23,7 @@ class TextToSpeech():
 		self.tts.save('play_file.wav')
 
 
-class PlaySoundFile(BoxLayout):
+class PlaySoundFile(Screen):
 	speech_input = ObjectProperty()
 	new_phrase = TextToSpeech()
 	sound = None
@@ -54,10 +56,16 @@ class PlaySoundFile(BoxLayout):
 		self.new_phrase.set_speech(self.phrase)
 		self.new_phrase.save_to_file()
 
-class PlayAudioApp(App):
+
+class ScreenManagment(ScreenManager):
+	pass
+
+load_kivy_file = Builder.load_file("playaudio.kv")
+
+class MainApp(App):
 	def build(self):
-		return PlaySoundFile()
+		return load_kivy_file
 
 
 if __name__ == "__main__":
-	PlayAudioApp().run()
+	MainApp().run()
