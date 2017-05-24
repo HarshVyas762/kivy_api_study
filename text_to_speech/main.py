@@ -1,3 +1,5 @@
+__version__ = "0.0.1 alpha-test"
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
